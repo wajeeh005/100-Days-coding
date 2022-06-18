@@ -1,9 +1,9 @@
-Write a program that switches the values stored in the variables a and b.
-s
-Example Input
-a: 3
-b: 5
+# Write a program that switches the values stored in the variables a and b.
 
-Example Output
-a: 5
-b: 3
+### Example Input
+  a: 3
+  b: 5
+
+### Example Output
+  a: 5
+  b: 3
