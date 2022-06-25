@@ -25,17 +25,19 @@
 
 
 6. What happens if the user enters a number/symbol/space?
+
     Can you fix the code to keep the number/symbol/space when the text is encoded/decoded?
     ##### Example 
-    start_text = "meet me at 3"
-    end_text = "•••• •• •• 3"
+        start_text = "meet me at 3"
+        end_text = "•••• •• •• 3"
 
 
 7. What if the user enters a shift that is greater than the number of letters in the alphabet?
 
-##### **HINT**: Think about how you can use the modulus (%).
+     **HINT**: Think about how you can use the modulus (%).
 
 8.  Type 'yes' if you want to go again. Otherwise type 'no'.
-      If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
-##### **Hint:** Try creating a while loop that continues to execute the program if the user types 'yes'. 
+
+    If they type 'yes' then ask them for the direction/text/shift again and call the caesar() function again?
+             Hint: Try creating a while loop that continues to execute the program if the user types 'yes'. 
 
