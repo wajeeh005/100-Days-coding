@@ -1,5 +1,5 @@
 # Write a program of Higher Lower Game.
-## First you should go (**HERE**)[http://www.higherlowergame.com/]  and play the game.
+## First you should go [HERE](http://www.higherlowergame.com/)  and play the game.
 
 
 ### Steps to Follow:
