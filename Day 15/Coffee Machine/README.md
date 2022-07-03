@@ -2,7 +2,7 @@
 
 ## Steps to Follow
 
-#####  Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
+###  Prompt user by asking “What would you like? (espresso/latte/cappuccino):”
 
 1. Check the user’s input to decide what to do next.
 
@@ -10,13 +10,13 @@
 dispensed. The prompt should show again to serve the next customer.
 
 
-#####  Turn off the Coffee Machine by entering “off” to the prompt.
+###  Turn off the Coffee Machine by entering “off” to the prompt.
 
 1.   For maintainers of the coffee machine, they can use “off” as the secret word to turn off
 the machine. Your code should end execution when this happens.
 
 
-#####  Print report.
+###  Print report.
 
 1.  When the user enters “report” to the prompt, a report should be generated that shows
 the current resource values. e.g.
@@ -31,7 +31,7 @@ the current resource values. e.g.
 
 
 
-##### Check resources sufficient?
+### Check resources sufficient?
 
 1. When the user chooses a drink, the program should check if there are enough
 resources to make that drink.
@@ -43,7 +43,7 @@ not continue to make the drink but print: “Sorry there is not enough water.”
 
 
 
-##### Process coins.
+### Process coins.
 
 1. If there are sufficient resources to make the drink selected, then the program should
 prompt the user to insert coins.
@@ -53,7 +53,7 @@ prompt the user to insert coins.
 3. Calculate the monetary value of the coins inserted. E.g. 1 quarter, 2 dimes, 1 nickel, 2
 pennies = 0.25 + 0.1 x 2 + 0.05 + 0.01 x 2 = $0.52
 
-##### Check transaction successful?
+### Check transaction successful?
 
 1. Check that the user has inserted enough money to purchase the drink they selected.
 
@@ -74,15 +74,16 @@ machine as the profit and this will be reflected the next time “report” is t
 
 3. If the user has inserted too much money, the machine should offer change.
 
-E.g. “Here is $2.45 dollars in change.” The change should be rounded to 2 decimal
+    E.g. “Here is $2.45 dollars in change.” The change should be rounded to 2 decimal
 places.
 
-##### Make Coffee.
+### Make Coffee.
+
 1. If the transaction is successful and there are enough resources to make the drink the
 user selected, then the ingredients to make the drink should be deducted from the
 coffee machine resources.
 
-E.g. report before purchasing latte:
+    E.g. report before purchasing latte:
 
     Water: 300ml
 
@@ -92,7 +93,7 @@ E.g. report before purchasing latte:
 
     Money: $0
 
-Report after purchasing latte:
+    Report after purchasing latte:
 
     Water: 100ml
 
@@ -106,7 +107,7 @@ Report after purchasing latte:
 latte was their choice of drink.
 
 
-##### Print Options in following format
+### Print Options in following format
 1. For Menu Type:   a  
 2.  For Knowing Prices Of Drink Type :    b
 3.  For Order Drink  Type:    c
