@@ -2,7 +2,7 @@
 
 ### This is basically time managment system that Transformed how we work.
 
-    Following basic Principles which apply in Time managment
+    Following basic Principles which apply in Time managment 
 
 1.  Work for 25 minutes.
 
