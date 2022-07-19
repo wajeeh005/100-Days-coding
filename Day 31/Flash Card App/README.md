@@ -29,28 +29,28 @@ You can save word in Excel sheet in any language and then translate it via follo
 ## Steps must follow in every project of Tkinter
 
 1.  First create window
-        window=Tk()
+            window=Tk()
 
 2.  Give title of window
-        windo.title("Write Here a Title you want to give")
+            window.title("Write Here a Title you want to give")
 
 3.  Configure the window ,add padding or background
     colour etc
-        window.config(padx=50,pady=50)
+            window.config(padx=50,pady=50)
 
 4.  Must End with following line
-        window.mainloop()
+            window.mainloop()
 
 
 ### Following things we add after 3rd step
 
 1.  Canvas , we can used this to add, draw different things which we want to display. The width and height should be same as size of image we want to add.
-        Canvas(width=800,height=524)
+            Canvas(width=800,height=524)
 
 2.  PhotoImage(file="location of image") used to save the image in a variable
 
 3.  creat_image used to display image on a canvas
-    canvas.create_image(x_axis_value,y_axis_value,image=variable_name(used in step 2))
+        canvas.create_image(x_axis_value,y_axis_value,image=variable_name(used in step 2))
 
 
 
