@@ -1,6 +1,6 @@
 # Flash Card App
 
-### This application is basically help you to learn new words in diffrent language according to you.
+### This application is basically help you to learn new words in different language.
 
 1.  Its like flash card appears randomly from the list.
 
@@ -26,7 +26,7 @@ You can save word in Excel sheet in any language and then translate it via follo
 
 3.  Everything store in a new file, so to help you to show the words next time which are unknown to you or you doesn't remmember.
 
-## Steps must used in very project of Tkinter
+## Steps must follow in every project of Tkinter
 
 1.  First create window
         window=Tk()
@@ -44,7 +44,7 @@ You can save word in Excel sheet in any language and then translate it via follo
 
 ### Following things we add after 3rd step
 
-1.  Canvas , we can used this to add, draw diffrent things which we want to display. The width and height should be same as size of image we want to add.
+1.  Canvas , we can used this to add, draw different things which we want to display. The width and height should be same as size of image we want to add.
         Canvas(width=800,height=524)
 
 2.  PhotoImage(file="location of image") used to save the image in a variable
