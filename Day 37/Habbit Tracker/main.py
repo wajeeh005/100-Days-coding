@@ -3,7 +3,7 @@ from datetime import datetime
 import requests
 
 TOKEN = "s2jkl2l1n3af14v9asd8fa12fv9fa8s7jh12u3o0d"
-USERNAME = "Your_name"
+USERNAME = "wajeehulhassan"
 pixela_endpoint = "https://pixe.la/v1/users"
 parameters = {
     "token": TOKEN,
@@ -15,7 +15,7 @@ parameters = {
 # response = requests.post(url=pixela_endpoint, json=parameters)
 # print(response)
 ID="graph1"
-habit_name="Your habbit name"
+habit_name="Cycling "
 graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
 graph_prams = {
     "id": ID,
