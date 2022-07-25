@@ -13,7 +13,7 @@ Pixela is the API service. With this service, you can get a GitHub like graph th
 6. How to update a pixel? Go on [put-pixel](https://docs.pixe.la/entry/put-pixel).
 7. How to delete a pixel? Go on [delete-pixel](https://docs.pixe.la/entry/delete-pixel)
 
-
+Click on this for Checking the reslts[MyProject](https://pixe.la/v1/users/wajeehulhassan/graphs/graph1.html).
 
 ### Note:
 You simply uncomment the lines of requestes according to you and it will work. For example if you want to update then uncomment update line and fill the date according to you and then request.
