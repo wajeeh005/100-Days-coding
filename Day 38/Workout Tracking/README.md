@@ -38,3 +38,6 @@ Output
          
 
 We enter walk and 25 minutes Through NLP it get the meaning and save the data in sheet.
+
+#### Note
+Go to [My Excel Sheet](https://docs.google.com/spreadsheets/d/1f8X1GyJMW6o4uyGZAcPhVr4X-T4xOrv8IVjkaBHpa-U/edit#gid=0) for checking out how this code output store in Excel sheet.
