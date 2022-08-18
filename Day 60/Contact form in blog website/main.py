@@ -12,7 +12,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def home_page():
-    return render_template("index.html", all_data = data)
+    return render_template("index.html", all_data=data)
 
 @app.route("/about")
 def about_page():
@@ -33,7 +33,7 @@ def show_post(index):
 
 
 
-@app.route("/contact", methods=["GET", "POST"]
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
     if request.method == "POST":
         form_data = request.form
