@@ -1,3 +1,4 @@
+import flask as flask
 from flask import Flask, render_template, request, url_for, redirect, flash, send_from_directory
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -38,6 +39,10 @@ def home():
 @app.route('/register', methods=["GET", "POST"])
 def register():
     if request.method == "POST":
+
+        if User.query.filter_by(email=request.form.get("email")).first():
+            flash("You already registerd.")
+            return redirect(url_for('login'))
         hash_salted_password = generate_password_hash(
             request.form.get('password'),
             method='pbkdf2:sha256',
@@ -57,27 +62,32 @@ def register():
     return render_template("register.html")
 
 
-@app.route('/login',methods=["GET","POST"])
+@app.route('/login', methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         email = request.form.get("email")
         password = request.form.get("password")
         user = User.query.filter_by(email=email).first()
-
-        if check_password_hash(user.password,password):
+        if not user:
+            flash("That email does not exist, please enter correct email again.")
+            return redirect(url_for('login'))
+        elif not check_password_hash(user.password, password):
+            flash('Password is incorrect, Please try again.')
+            return redirect(url_for('login'))
+        else:
             login_user(user)
             return redirect(url_for("secrets"))
-    return render_template("login.html")
+    return render_template("login.html", logged_in=current_user.is_authenticated)
 
 
 @app.route('/secrets')
 def secrets():
     print(current_user.name)
-    return render_template("secrets.html",name=current_user.name)
+    return render_template("secrets.html", name=current_user.name, logged_in=True)
 
 
 @app.route("/download")
-def downlaod():
+def download():
     return send_from_directory("static", filename="files/cheat_Sheet.pdf")
 
 
@@ -87,9 +97,7 @@ def logout():
     return redirect(url_for('home'))
 
 
-@app.route('/download')
-def download():
-    pass
+
 
 
 if __name__ == "__main__":
