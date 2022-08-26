@@ -1,8 +1,3 @@
-import email
-from enum import unique
-import imp
-from pickletools import read_string1
-from wsgiref.validate import validator
 from flask import Flask, render_template, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_ckeditor import CKEditor
@@ -11,8 +6,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from flask_login import UserMixin, login_user, LoginManager, login_required, current_user, logout_user
-from forms import CreatePostForm,RegisterForm,LoginForm
-from flask_gravatar import Gravatar
+from forms import CreatePostForm,RegisterForm,LoginForm,CommentForm
 from functools import wraps
 from flask import abort
 
@@ -30,27 +24,48 @@ db = SQLAlchemy(app)
 
 ##CONFIGURE TABLES
 
-class BlogPost(db.Model):
-    __tablename__ = "blog_posts"
-    id = db.Column(db.Integer, primary_key=True)
-    author_id = db.Column(db.Integer, db.ForeignKey("user.id"))
-    author = db.Column(db.String(250), nullable=False)
-    title = db.Column(db.String(250), unique=True, nullable=False)
-    subtitle = db.Column(db.String(250), nullable=False)
-    date = db.Column(db.String(250), nullable=False)
-    body = db.Column(db.Text, nullable=False)
-    img_url = db.Column(db.String(250), nullable=False)
-db.create_all()
-
 class User(UserMixin,db.Model):
-    __table_name__ = "user"
+    __table_name__ = "users"
     id = db.Column(db.Integer,primary_key=True)
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
     name = db.Column(db.String(100))
     post=relationship("BlogPost", back_populates='author')
 
-db.create_all
+    commets = relationship("Commet", back_populate="commet_author")
+
+
+class BlogPost(db.Model):
+    __tablename__ = "blog_posts"
+    id = db.Column(db.Integer, primary_key=True)
+    author_id = db.Column(db.Integer, db.ForeignKey("users.id"))
+    author = relationship("User",back_populates="posts")
+
+    title = db.Column(db.String(250), unique=True, nullable=False)
+    subtitle = db.Column(db.String(250), nullable=False)
+    date = db.Column(db.String(250), nullable=False)
+    body = db.Column(db.Text, nullable=False)
+    img_url = db.Column(db.String(250), nullable=False)
+
+    commets = relationship('Commet', back_populates="parent_post")
+# db.create_all()
+
+
+
+class Commet(db.Model):
+    __tablename__ = 'commets'
+    id = db.Column(db.Integer, primary_key=True)
+    
+
+    author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    commet_author = relationship("User", back_populates='comments')
+
+    post_id = db.Column(db.Integer, db.ForeignKey("blog_posts.id"))
+    parent_post = relationship("Blogpost",back_populates="comments")
+    text = db.Column(db.Text, nullable=False)
+
+#run it one time then commet below line
+db.create_all()
 
 
 def admin_only(f):
@@ -126,10 +141,25 @@ def logout():
     return redirect(url_for('get_all_posts'))
 
 
-@app.route("/post/<int:post_id>")
+@app.route("/post/<int:post_id>", methods=["GET", "POST"])
 def show_post(post_id):
+    form = CommentForm()
     requested_post = BlogPost.query.get(post_id)
-    return render_template("post.html", post=requested_post)
+
+    if form.validate_on_submit():
+        if not current_user.is_authenticated:
+            flash("You need to login or register to comment.")
+            return redirect(url_for("login"))
+
+        new_comment = Comment(
+            text=form.comment_text.data,
+            comment_author=current_user,
+            parent_post=requested_post
+        )
+        db.session.add(new_comment)
+        db.session.commit()
+
+    return render_template("post.html", post=requested_post, form=form, current_user=current_user)
 
 
 @app.route("/about")
@@ -192,4 +222,4 @@ def delete_post(post_id):
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000)
+    app.run(debug=True)
