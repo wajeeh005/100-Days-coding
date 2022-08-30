@@ -6,22 +6,20 @@ First go to stating file and do it by yourself, if you stuck then check solution
 
 #### What we do ?
 
-combine the groupby() and count() functions to aggregate data
+1. Combine the groupby() and count() functions to aggregate data
 
-use the .value_counts() function
+2. Use the .value_counts() function
 
-slice DataFrames using the square bracket notation e.g., df[:-2] or df[:10]
+3. Slice DataFrames using the square bracket notation e.g., df[:-2] or df[:10]
 
-use the .agg() function to run an operation on a particular column
+4. Use the .agg() function to run an operation on a particular column
 
-rename() columns of DataFrames
+5. rename() columns of DataFrames
 
-create a line chart with two separate axes to visualise data that have different scales.
+6. Create a line chart with two separate axes to visualise data that have different scales.
 
-create a scatter plot in Matplotlib
+7. Create a scatter plot in Matplotlib
 
-work with tables in a relational database by using primary and foreign keys
+8. .merge() DataFrames along a particular column
 
-.merge() DataFrames along a particular column
-
-create a bar chart with Matplotlib
+9. Create a bar chart with Matplotlib
